@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GreenRev Business Suite · Test Console</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="auth" class="auth hidden"></div>
+    <div id="shell" class="shell hidden">
+      <aside class="side">
+        <div class="brand"><span class="logo">GR</span><div><b>Business Suite</b><small id="org-name"></small></div></div>
+        <nav id="nav"></nav>
+        <div class="side-foot">
+          <div id="plan-pill" class="pill"></div>
+          <button id="logout" class="link">Sign out</button>
+        </div>
+      </aside>
+      <main>
+        <header class="top">
+          <button id="menu" class="menu-btn" aria-label="Menu">☰</button>
+          <h1 id="title">Dashboard</h1>
+          <span class="api-note">Test console · API <code id="api-base"></code></span>
+        </header>
+        <section id="page" class="page"></section>
+      </main>
+    </div>
+    <div id="toast" class="toast hidden"></div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

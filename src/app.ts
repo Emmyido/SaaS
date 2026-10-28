@@ -3,6 +3,9 @@ import Fastify, { type FastifyError } from "fastify";
 import cors from "@fastify/cors";
 import jwt from "@fastify/jwt";
 import multipart from "@fastify/multipart";
+import fastifyStatic from "@fastify/static";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import swagger from "@fastify/swagger";
 import swaggerUi from "@fastify/swagger-ui";
 import {
@@ -99,6 +102,12 @@ export async function buildApp(opts: { logger?: boolean } = {}) {
     if (!verifyPaystackSignature(req.rawBody ?? "", req.headers["x-paystack-signature"] as string | undefined)) throw unauthorized("Bad signature");
     return handlePaystackEvent(req.body as { event: string; data: unknown } as any);
   });
+  // Test console (web/): a plain HTML screen for trying every feature, at /app/
+  const webDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../web");
+  if (fs.existsSync(webDir)) {
+    await app.register(fastifyStatic, { root: webDir, prefix: "/app/", decorateReply: false });
+    app.get("/app", { schema: { hide: true } }, async (_req, reply) => reply.redirect("/app/"));
+  }
   await app.register(authRoutes);
   await app.register(marketplaceWebhookRoutes);
 

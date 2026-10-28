@@ -53,6 +53,17 @@ npm run migrate
 npm run dev                     # http://localhost:4000, API docs at /docs
 ```
 
+### Test console (screens for trying everything)
+
+With the API running, open **http://localhost:4000/app**. It's a simple web screen over the whole API:
+- create a business, or sign in
+- add customers, suppliers and cars (including USD purchases with duty and clearing)
+- sell with discounts and installment plans, take payments, record bills and supplier payments, log expenses
+- set FX rates and open every report
+- use job cards, haulage trips, rentals, marketplace sync and leads, the AI tools, team and plan settings, and a raw API console
+
+To run it from VS Code Live Server instead, open `web/index.html` with Live Server. It talks to `http://localhost:4000` by default; to use a different API address, add `?api=http://host:port` to the page address. The console is for testing only: your app's real screens call the same API.
+
 Tests run end-to-end against a real PostgreSQL database (`greenrev_suite_test` by default, override with `DATABASE_URL`):
 
 ```bash
