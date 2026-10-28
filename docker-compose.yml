@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: greenrev
+      POSTGRES_PASSWORD: greenrev
+      POSTGRES_DB: greenrev_suite
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+  api:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://greenrev:greenrev@db:5432/greenrev_suite
+    ports: ["4000:4000"]
+    depends_on: [db]
+volumes:
+  pgdata:

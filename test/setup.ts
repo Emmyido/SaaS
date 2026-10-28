@@ -1,0 +1,10 @@
+process.env.NODE_ENV = "test";
+process.env.DATABASE_URL ??= "postgres://greenrev:greenrev@localhost:5432/greenrev_suite_test";
+process.env.JWT_SECRET = "test-secret";
+process.env.GREENREV_SSO_SECRET = "sso-test-secret";
+process.env.GREENREV_WEBHOOK_SECRET = "webhook-test-secret";
+process.env.GREENREV_MARKETPLACE_URL = "";
+process.env.PAYSTACK_SECRET_KEY = "sk_test_paystack";
+process.env.RUN_WORKER_IN_PROCESS = "false";
+process.env.UPLOAD_DIR = "/tmp/greenrev-test-uploads";
+process.env.PUBLIC_BASE_URL = "http://localhost:4000";
